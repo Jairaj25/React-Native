@@ -1,4 +1,4 @@
-import { Button, Text, View } from "react-native";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
 import {IProduct, IProductInCart, Parent} from "./Parent";
 export interface IMoreProducts{
     ProductList: IProduct[],
@@ -10,13 +10,15 @@ export interface IMoreProducts{
 export function MoreProducts(props: IMoreProducts) {
     
     return (
-        <View>
+        <View style={styles.container}>
             {props.ProductList.map((p,index)=>{
                 return(
-                    <View key={index}>
+                    <View key={index} style={styles.prods}>
                         <View>
                             <Text>Name: {p.name}</Text>
                             <Text>Price: {p.price}</Text>
+                            <Text>Stock Left: {p.availableUnits}</Text>
+                            <Image style={styles.Image} source={p.url}/>
                         </View>
                         <View style={{flexDirection:"row"}}>
                             <Button title="+" onPress={()=>props.AddProduct(p.id)} />
@@ -28,3 +30,28 @@ export function MoreProducts(props: IMoreProducts) {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        marginRight: 20,
+        paddingLeft: 10,
+
+    },
+    prods: {
+        backgroundColor: 'white',
+        borderRadius: 15,
+        border: 5,
+        borderWidth:2,
+        borderColor: 'black',
+        marginTop: 30,
+        paddingLeft: 8,
+        
+    },
+    Image: {
+        marginLeft: 150,
+        width: 150,
+        height: 150,
+        resizeMode: 'contain'
+    }
+  });
+  

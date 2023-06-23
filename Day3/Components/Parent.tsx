@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import type {PropsWithChildren} from 'react';
+const img1 =require ("./Images/img1.jpg");
+const img2 =require ("./Images/img2.jpg");
+const img3 =require ("./Images/img3.jpg");
+const img4 =require ("./Images/img4.jpg");
+
 import {
+  Alert,
   Button,
-  SafeAreaView,
+  Modal,
   ScrollView,
   StyleSheet,
   Text,
@@ -15,12 +20,14 @@ export interface IProduct  {
     id: number,
     name: string,
     price: number,
-    availableUnits: number
+    availableUnits: number,
+    url:string,
   }
   
   export interface IProductInCart  {
     id: number,
-    quantity: number
+    quantity: number,
+    
   }
   
   
@@ -37,33 +44,32 @@ export interface IProduct  {
         id: 1,
         name: 'Samsung 138 cm (55 inches) Crystal 4K Series Ultra HD Smart LED TV UA55AUE60AKLXL',
         price: 45990,
-        availableUnits: 4
+        availableUnits: 4,
+        url: img1
       },
      {
         id: 2,
         name: 'OnePlus 108 cm (43 inches) Y Series 4K Ultra HD Smart Android LED TV 43Y1S Pro',
         price: 42990,
-        availableUnits: 2
+        availableUnits: 2,
+        url:img2
       },
       {
         id: 3,
         name: 'Nu 165 cm (65 inch) Premium Series 4K Ultra HD WebOS Smart LED TV LED65UWA1',
         price: 46990,
-        availableUnits: 5
+        availableUnits: 5,
+        url:img3
       },
       {
         id: 4,
         name: 'TCL 108 cm (43 inches) 4K Ultra HD Certified Android Smart LED TV 43P615',
         price: 45999,
-        availableUnits: 1
+        availableUnits: 1,
+        url:img4  
       },]
-      // this.state.ProductCart = [
-      //   {
-      //     id: 1,
-      //     quantity: 1
-      //   },
-      // ]
     }
+    
     AddProduct=(itemId:number)=>{
       
       this.setState((prev: {ProductList: IProduct[], ProductCart: IProductInCart[], TotalNumber:number})=>{
@@ -121,12 +127,22 @@ export interface IProduct  {
         prev.TotalNumber=0;
         return prev;
       })
+      
+
     }
+    
     render(){
+      
       return (
         <ScrollView>
-        <View>
-          <Text> Total Amount {this.state.TotalNumber}</Text>
+        <View style={styles.container}>
+        
+          <View style={{flexDirection:'row', flex: 2,}}>
+            <Text style={{marginTop:10,}}> Total Amount {this.state.TotalNumber}</Text>
+            <View style={{position: 'absolute', right: 10,}}>
+              <Button title="Clear Cart" onPress={()=>this.ResetCart()} />
+            </View>
+          </View>
           <CartView ProductList={this.state.ProductList} ProductCart={this.state.ProductCart} AddProduct={this.AddProduct} RemoveProduct={this.RemoveProduct} ResetCart={this.ResetCart} TotalNumber={this.state.TotalNumber} />
           <Text>
             More Products:
@@ -141,7 +157,7 @@ export interface IProduct  {
   
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      
       backgroundColor: 'white'
     },
   });
