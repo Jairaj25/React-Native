@@ -69,13 +69,15 @@ export function CalcBtns(props: ICalcButtons){
     </View>
    );
    return (
-    <View><Text>Your Input: </Text>
+    <View style={styles.MainView}>
+        <Text style={{fontSize: 20}}>Your Input: </Text>
         <View style={styles.textInputView}>
-            <TextInput placeholder='0' onChangeText={setInput} value = {input}></TextInput>
+            <TextInput style={{fontSize: 20}} placeholder='0...' onChangeText={setInput} value = {input}></TextInput>
         </View>
         <View>
             
-            <Text>Output: </Text><Text style={styles.text}>{total}</Text>
+            <Text style={{fontSize: 20 ,textAlign: 'center'}}>Output: </Text>
+            <Text style={styles.text}>{total}</Text>
         </View>
         <FlatList 
         data={props.array}
@@ -90,10 +92,10 @@ const styles = StyleSheet.create({
     textInputView :{
         borderColor: 'black',
         borderWidth: 1,
-        marginTop:40,
+        margin: 15,
         width:200,
-        height:20,
-        alignSelf:'center'
+        height:25,
+        alignSelf:'center',
     },
     text :{
         marginTop:20,
@@ -101,15 +103,12 @@ const styles = StyleSheet.create({
         width:200,
         height:20,
         fontSize:20,
-        fontWeight:"bold",
         alignSelf:'center',
         borderWidth: 1,
-        color:'black'
+        color:'royalblue'
     },
     number :{
-
-        padding:35,
-
+        padding:30,
     },
     touchableOpacity:{
         
@@ -119,6 +118,11 @@ const styles = StyleSheet.create({
     numText:{
         fontSize:20,
         
+    }, 
+    MainView: {
+        marginTop: 25,
+        justifyContent: 'center', 
+        alignItems: 'center'
     }
 
       

@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     container: {
         marginRight: 20,
         paddingLeft: 10,
-
+        
     },
     prods: {
         backgroundColor: 'white',

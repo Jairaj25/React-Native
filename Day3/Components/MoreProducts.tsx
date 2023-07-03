@@ -15,9 +15,9 @@ export function MoreProducts(props: IMoreProducts) {
                 return(
                     <View key={index} style={styles.prods}>
                         <View>
-                            <Text>Name: {p.name}</Text>
-                            <Text>Price: {p.price}</Text>
-                            <Text>Stock Left: {p.availableUnits}</Text>
+                            <Text style={{color: '#101820'}}>Name: {p.name}</Text>
+                            <Text style={{color: '#101820'}}>Price: {p.price}</Text>
+                            <Text style={{color: '#101820'}}>Stock Left: {p.availableUnits}</Text>
                             <Image style={styles.Image} source={p.url}/>
                         </View>
                         <View style={{flexDirection:"row"}}>
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     container: {
         marginRight: 20,
         paddingLeft: 10,
-
     },
     prods: {
         backgroundColor: 'white',

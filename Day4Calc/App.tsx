@@ -37,11 +37,8 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
+
         <CalcBtns array = {arrayOfBtns}/>
-      </ScrollView>
     </SafeAreaView>
   );
 }
